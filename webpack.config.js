@@ -36,6 +36,18 @@ const config = {
         exclude: /(node_modules)/,
         loader: 'babel-loader',
       },
+      {
+        test: /\.(woff|woff2|eot|ttf|otf|svg|png|jpg|gif)$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[name].[ext]',
+              outputPath: 'fonts'
+            }
+          }
+        ],
+      },
     ],
   },
   plugins: [

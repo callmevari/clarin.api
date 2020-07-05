@@ -1,0 +1,14 @@
+@import '~font-awesome/css/font-awesome.css';
+
+body, html {
+  width: 100vw;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+@import './Header/Header';
+@import './Navbar/Navbar';
+@import './Main/Main';

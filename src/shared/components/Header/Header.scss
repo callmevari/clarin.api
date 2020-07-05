@@ -1,0 +1,49 @@
+header {
+  display: flex;
+  flex-flow: row nowrap;
+  // padding: 0 5px;
+  align-items: center;
+  // justify-content: flex-start;
+
+  width: 100vw;
+  height: 55px;
+  font-size: 2em;
+  color: white;
+  background-color: rgb(31, 31, 31);
+
+  ul {
+    list-style: none;
+    list-style-type: none;
+    display: inline;
+    color: inherit;
+    padding-inline-start: 25px !important;
+
+    li {
+      padding: 0 5px;
+      display: inherit;
+      // margin: 0 5px;
+    }
+
+    li:hover {
+      display: flex;
+      align-items: center;
+      background-color: white;
+      color: black;
+      height: 55px;
+    }
+
+    a {
+      color: inherit !important;
+      text-decoration: none;
+    }
+  }
+}
+
+@media screen and (min-width: 1024px) {
+
+  header {
+    font-size: 1em;
+    height: 40px;
+  }
+
+}
