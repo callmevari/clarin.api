@@ -1,10 +1,8 @@
 const router = require('express').Router();
-// const usersRouter = require('./users/routes');
+const dbRouter = require('./db/routes');
 // const errorHandler = require('../middlewares/errorHandler');
 
-const { NODE_ENV } = process.env;
-
-// router.use('/users', usersRouter);
+router.use('/db', dbRouter);
 
 // convention endpoint to check instance health
 router.use('/ping', (req, res) => res.send('pong'));

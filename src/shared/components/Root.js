@@ -4,11 +4,11 @@ import Navbar from './Navbar/Navbar';
 import Main from './Main/Main';
 import './Root.scss';
 
-const Root = () => (
+const Root = ({ holidays }) => (
   <React.Fragment>
     <Header />
     <Navbar />
-    <Main />
+    <Main holidays={holidays} />
   </React.Fragment>
 );
 

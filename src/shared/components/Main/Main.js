@@ -1,12 +1,28 @@
-import React from 'react';
+import React, { useState } from 'react';
+import Title from '../Title/Title';
+import Checkbox from '../Checkbox/Checkbox';
+import Select from '../Select/Select';
+import List from '../List/List';
 
-const Main = () => {
+const Main = ({ holidays }) => {
+
+  const [year, setYear] = useState(2011);
+
+  const onChangeSelectHandler = (e) => {
+    console.log('select changed');
+    setYear(e.target.value);
+  };
+
+  const onChangeCheckboxHandler = () => {
+    console.log('checkbox changed');
+  };
+
   return (
     <main>
-      <h1>Feriados</h1>
-      <div className="form">
-        Formato mensual: <input type="checkbox" className="month_filter" />
-      </div>
+      <Title text="Feriados" />
+      <Checkbox text="Formato mensual" onChangeHandler={onChangeCheckboxHandler} />
+      <Select text="Año" onChangeHandler={onChangeSelectHandler} holidays={holidays} />
+      <List holidays={holidays} year={year} />
     </main>
   );
 };
