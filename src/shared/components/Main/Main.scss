@@ -37,7 +37,7 @@ main {
 
     select {
       margin-left: 5px;
-      width: 50vw;
+      width: 20vw;
       margin-top: -3px;
       padding: 3px;
       border-radius: 5px;
@@ -54,6 +54,33 @@ main {
     height: 30px;
     border-radius: 2px;
     background-color: rgb(228, 228, 228);
+  }
+
+  .grid {
+    margin-top: 15px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    border-top: 1px solid black;
+    border-right: 1px solid right;
+  }
+
+  .grid > span {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    padding: 8px 4px;
+    border-left: 1px solid black;
+    border-bottom: 1px solid black;
+    text-align: center;
+    
+    i {
+      color: black;
+    }
+
+    i:hover {
+      color: #de1b2f;
+      text-decoration: underline;
+    }
   }
 }
 

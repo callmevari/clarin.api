@@ -1,17 +1,17 @@
 import React from 'react';
 
-const List = ({ holidays, year }) => {
+const List = () => {
   return (
-    <div className='form-list'>
-      {
-        holidays.year.map(each => {
-          if (each.year === year) {
-            for (let key in each) {
-              if (key !== '_id' & key !== 'year') console.log(each[key]);
-            }
-          }
-        })
-      }
+    <div className='grid'>
+      <span>
+        <strong>Mes</strong>
+      </span>
+      <span>
+        <strong>Día</strong>
+      </span>
+      <span style={{ borderRight: '1px solid black' }}>
+        <strong>Acción</strong>
+      </span>
     </div>
   );
 };
