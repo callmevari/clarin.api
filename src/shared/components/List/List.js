@@ -20,13 +20,14 @@ const List = ({ holidays, year }) => {
         }
 
         return holidaysArray.map((each, index) => {
-          console.log(each.id);
           return (
             <React.Fragment key={index}>
               <span>{returnMonth(each.month)}</span>
               <span>{each.day}</span>
               <span style={{ borderRight: '1px solid black' }}>
-                <a href="#">
+                <a 
+                  onClick={onClickPreviewHandler}
+                >
                   <i className='fa fa-eye' style={{ marginRight: '10px' }} /> 
                 </a>
                 <a href="#">
@@ -38,8 +39,11 @@ const List = ({ holidays, year }) => {
         })
       }
     });
-
     return list;
+  };
+
+  const onClickPreviewHandler = () => {
+    
   };
 
   // move this to the util folder
