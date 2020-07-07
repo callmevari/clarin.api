@@ -1,6 +1,7 @@
 import React from 'react';
+import PreviewLink from '../PreviewLink/PreviewLink';
 
-const List = ({ holidays, year }) => {
+const List = ({ holidays, year, onClickPreviewHandler }) => {
 
   const listHolidays = () => {
     let holidaysArray = [];
@@ -25,11 +26,7 @@ const List = ({ holidays, year }) => {
               <span>{returnMonth(each.month)}</span>
               <span>{each.day}</span>
               <span style={{ borderRight: '1px solid black' }}>
-                <a 
-                  onClick={onClickPreviewHandler}
-                >
-                  <i className='fa fa-eye' style={{ marginRight: '10px' }} /> 
-                </a>
+                <PreviewLink { ...each } year={year} onClick={onClickPreviewHandler} />
                 <a href="#">
                   <i className='fa fa-pencil' />
                 </a>
@@ -40,9 +37,6 @@ const List = ({ holidays, year }) => {
       }
     });
     return list;
-  };
-
-  const onClickPreviewHandler = () => {
   };
 
   // move this to the util folder
