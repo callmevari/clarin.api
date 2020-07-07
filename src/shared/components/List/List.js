@@ -43,7 +43,6 @@ const List = ({ holidays, year }) => {
   };
 
   const onClickPreviewHandler = () => {
-    
   };
 
   // move this to the util folder
