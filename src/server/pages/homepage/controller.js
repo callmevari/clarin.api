@@ -8,6 +8,8 @@ const render = async (req, res, next) => {
   try {
     const props = {
       holidays: {
+        // send a message to the client to run
+        // migration.js if data is empty()
         year: await DataBaseService.getMany('year', {}) || null,
         month: await DataBaseService.getMany('month', {}) || null
       },

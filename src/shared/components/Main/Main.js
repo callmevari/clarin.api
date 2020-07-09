@@ -29,7 +29,8 @@ const Main = ({ holidays }) => {
     console.log('checkbox changed');
   };
 
-  const onClickPreviewHandler = (e) => {
+  const onClickPreviewHandler = (e, holiday) => {
+    console.log(holiday);
     const element = e.currentTarget.attributes;
     setHoliday({
       id: element['data-id'].value,
@@ -40,23 +41,21 @@ const Main = ({ holidays }) => {
     setView('Preview');
   };
 
+  const ListComponent = {
+    List: <List
+      holidays={holidays}
+      year={year}
+      onClickPreviewHandler={onClickPreviewHandler}
+    />,
+    Preview: <Preview holiday={holiday} />
+  };
+
   return (
     <main>
       <Title text="Feriados" />
       <Checkbox text="Formato mensual" onChangeHandler={onChangeCheckboxHandler} />
       <Select text="Año" onChangeHandler={onChangeSelectHandler} holidays={holidays} />
-      {
-        view === 'List' && 
-        <List 
-          holidays={holidays} 
-          year={year} 
-          onClickPreviewHandler={onClickPreviewHandler} 
-        />
-      }
-      {
-        view === 'Preview' &&
-        <Preview holiday={holiday} />
-      }
+      {ListComponent[view] || 'Loading...'}
     </main>
   );
 };

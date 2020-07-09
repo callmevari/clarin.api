@@ -13,5 +13,5 @@ module.exports = (jsx, props) => `
     </body>
   </html>
   <script>window.__PRELOAD_STATE__=${JSON.stringify(props)}</script>
-  <script src="bundle.js"></script>
+  <script src="/bundle.js"></script>
 `;

@@ -1,20 +1,19 @@
 // migration.js
 require('dotenv').config();
-
+const axios = require('axios');
 const { DataBaseService } = require('./src/server/services');
 
-class LoadDataBase {
-  async isDataBaseEmpty() {
-    try {
-      const collections = await DataBaseService.getCollections();
-      return collections;
-    } catch (err) {
-      return err;
-    }
+class Migration {
+  constructor(){
+    this.years = [2011, 2020];
+    return this.start();
   }
-}
 
-const initDb = new LoadDataBase();
-initDb.isDataBaseEmpty().then(result => console.log(result));
+  async start() {
+    await DataBaseService.connect();
+    console.log(this.years);
+    return console.log('start() is not implemented yet');
+  };
+};
 
-
+const MigrationService = new Migration();

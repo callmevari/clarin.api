@@ -30,6 +30,7 @@ class DataBaseService {
   async close() {
     const { client } = this;
     client.close();
+    console.log(`🍃  Disconnected from database ${this.db.databaseName}`);
   }
 
   get(collectionName, query) {

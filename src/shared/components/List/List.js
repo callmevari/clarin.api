@@ -8,7 +8,7 @@ const List = ({ holidays, year, onClickPreviewHandler }) => {
 
     const list = holidays.year.map((each, index) => {
       if (each.year == year) {
-        
+                
         for (let key in each) {
           if (key !== 'year' & key !== '_id') {
             let row = each[key];
@@ -26,7 +26,7 @@ const List = ({ holidays, year, onClickPreviewHandler }) => {
               <span>{returnMonth(each.month)}</span>
               <span>{each.day}</span>
               <span style={{ borderRight: '1px solid black' }}>
-                <PreviewLink { ...each } year={year} onClick={onClickPreviewHandler} />
+                <PreviewLink { ...each } holiday={each} year={year} onClick={onClickPreviewHandler} />
                 <a href="#">
                   <i className='fa fa-pencil' />
                 </a>
@@ -36,10 +36,12 @@ const List = ({ holidays, year, onClickPreviewHandler }) => {
         })
       }
     });
+
     return list;
   };
 
   // move this to the util folder
+  // change to an object like ListComponent (Main.js)
   const returnMonth = (month) => {
     switch(month) {
       case 1: return 'Enero';
