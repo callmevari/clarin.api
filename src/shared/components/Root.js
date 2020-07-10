@@ -1,15 +1,15 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import Header from './Header/Header';
 import Navbar from './Navbar/Navbar';
 import Main from './Main/Main';
 import './Root.scss';
 
 const Root = ({ holidays }) => (
-  <React.Fragment>
+  <Fragment>
     <Header />
     <Navbar />
     <Main holidays={holidays} />
-  </React.Fragment>
+  </Fragment>
 );
 
 export default Root;
