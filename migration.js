@@ -17,11 +17,12 @@ class Migration {
       await DataBaseService.connect();
       const isEmpty = await DataBaseService.getCollections();
       if (!isEmpty.length) {
+        console.log('Starting process');
         for (let i = this.YEAR_BASE; i <= this.YEAR_LIMIT; i++) {
           const holidays = await axios.get(`http://nolaborables.com.ar/api/v2/feriados/${i}?incluir=opcional`);
           const document = {
             holidays: holidays.data,
-            year: i
+            year: i,
           };
           await DataBaseService.insert('holidays', document);
           count++;
