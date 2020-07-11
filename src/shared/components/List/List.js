@@ -1,42 +1,22 @@
 import React from 'react';
-import PreviewLink from '../PreviewLink/PreviewLink';
+import Icon from '../Icon/Icon';
 
-const List = ({ holidays, year, onClickPreviewHandler }) => {
+const List = ({ holidays, year, onClickPreviewHandler, onClickEditHandler }) => {
 
   const listHolidays = () => {
-    let holidaysArray = [];
-
-    const list = holidays.year.map((each, index) => {
-      if (each.year == year) {
-                
-        for (let key in each) {
-          if (key !== 'year' & key !== '_id') {
-            let row = each[key];
-            holidaysArray.push({
-              day: row.dia,
-              month: row.mes,
-              id: row.id,
-            });
-          }
-        }
-
-        return holidaysArray.map((each, index) => {
-          return (
-            <React.Fragment key={index}>
-              <span>{returnMonth(each.month)}</span>
-              <span>{each.day}</span>
-              <span style={{ borderRight: '1px solid black' }}>
-                <PreviewLink { ...each } holiday={each} year={year} onClick={onClickPreviewHandler} />
-                <a href="#">
-                  <i className='fa fa-pencil' />
-                </a>
-              </span>
-            </React.Fragment>
-          );
-        })
-      }
+    const byYear = holidays.find((each) => each.year == year);
+    const list = byYear.holidays.map((each, index) => {
+      return (
+        <React.Fragment key={index}>
+          <span>{returnMonth(each.mes)}</span>
+          <span>{each.dia}</span>
+          <span style={{ borderRight: '1px solid black' }}>
+            <Icon holiday={each} index={index} onClick={onClickPreviewHandler} icon='eye' />
+            <Icon holiday={each} index={index} onClick={onClickEditHandler} icon='pencil' />
+          </span>
+        </React.Fragment>
+      );
     });
-
     return list;
   };
 

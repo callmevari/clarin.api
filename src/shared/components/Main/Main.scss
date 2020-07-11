@@ -10,7 +10,7 @@ main {
 
   .errorLabel, .successLabel {
     display: flex;
-    flex-flow: row nowrap;
+    flex-flow: row wrap;
     width: 80vw;
     height: auto;
     padding: 5px;
@@ -85,9 +85,20 @@ main {
 
   .preview {
     display: flex;
-    flex-flow: colsumn wrap;
+    flex-flow: column wrap;
     padding: 15px;
-    background-color: rgb(201, 201, 201);
+    border-radius: 15px;
+    margin-top: 15px;
+    box-shadow: 2px 2px 10px grey;
+    background-color: rgb(226, 226, 226);
+
+    .btn {
+      height: 35px;
+      color: white;
+      background-color: #de1b2f;
+      border: 2px solid darkred;
+      border-radius: 2px;
+    }
   }
 }
 
@@ -100,5 +111,8 @@ main {
     select {
       width: 200px !important;
     }
-  }  
+  } 
+  .preview .btn {
+    width: 200px;
+  }
 }

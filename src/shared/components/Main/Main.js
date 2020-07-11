@@ -1,61 +1,80 @@
 import React, { useState, useEffect } from 'react';
-import Title from '../Title/Title';
-import Checkbox from '../Checkbox/Checkbox';
+import axios from 'axios';
 import Select from '../Select/Select';
 import List from '../List/List';
 import Preview from '../Preview/Preview';
+import Edit from '../Edit/Edit';
 
-const Main = ({ holidays }) => {
+const Main = ({ err, holidays }) => {
 
   const [view, setView] = useState('List');
   const [year, setYear] = useState(2011);
   const [holiday, setHoliday] = useState({});
+  const [error, setError] = useState(false);
 
   // componentDidMount();
   useEffect(() => {
+    if (err) setError(true);
   }, []);
 
-  // componentDidUpdate();
-  useEffect(() => {
-  });
-
   const onChangeSelectHandler = (e) => {
-    console.log('select changed');
     setYear(e.target.value);
     setView('List');
   };
 
-  const onChangeCheckboxHandler = () => {
-    console.log('checkbox changed');
-  };
-
-  const onClickPreviewHandler = (e, holiday) => {
-    console.log(holiday);
-    const element = e.currentTarget.attributes;
-    setHoliday({
-      id: element['data-id'].value,
-      day: element['data-day'].value,
-      month: element['data-month'].value,
-      year
-    })
+  const onClickPreviewHandler = (holiday, index) => {
+    setHoliday({ ...holiday, year, index });
     setView('Preview');
   };
 
-  const ListComponent = {
+  const onClickEditHandler = (holiday, index) => {
+    setHoliday({ ...holiday, year, index });
+    setView('Edit');
+  };
+
+  const onClickSaveHandler = (holiday) => {
+    axios.put('/api/db/updateHolidays', {
+      value: holiday,
+      collection: 'holidays',
+      year: parseInt(year),
+    })
+    .then(function (response) {
+      if (response.status == 200) {
+        console.log('Update the holidays (loaded before from props) in real time and redirect to home!');
+        window.location.replace("/");
+      }
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+  };
+
+  const ViewComponent = {
     List: <List
       holidays={holidays}
       year={year}
       onClickPreviewHandler={onClickPreviewHandler}
+      onClickEditHandler={onClickEditHandler}
     />,
-    Preview: <Preview holiday={holiday} />
+    Preview: <Preview 
+      holiday={holiday}
+      onClickEditHandler={onClickEditHandler}
+    />,
+    Edit: <Edit 
+      holiday={holiday}
+      onClickSaveHandler={onClickSaveHandler}
+    />,
   };
 
   return (
     <main>
-      <Title text="Feriados" />
-      <Checkbox text="Formato mensual" onChangeHandler={onChangeCheckboxHandler} />
-      <Select text="Año" onChangeHandler={onChangeSelectHandler} holidays={holidays} />
-      {ListComponent[view] || 'Loading...'}
+      {!err && 
+        <React.Fragment>
+          <Select text="Año" onChangeHandler={onChangeSelectHandler} holidays={holidays} />
+          {ViewComponent[view] || 'Loading view...'}
+        </React.Fragment>
+      }
+      {error && <div className="errorLabel" dangerouslySetInnerHTML={{ __html: err }} />}
     </main>
   );
 };

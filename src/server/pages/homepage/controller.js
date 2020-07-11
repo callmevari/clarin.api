@@ -6,14 +6,23 @@ const DataBaseService = require('../../services/DataBaseService');
 
 const render = async (req, res, next) => {
   try {
-    const props = {
-      holidays: {
-        // send a message to the client to run
-        // migration.js if data is empty()
-        year: await DataBaseService.getMany('year', {}) || null,
-        month: await DataBaseService.getMany('month', {}) || null
-      },
-    };
+    let props = {};
+    const holidays = await DataBaseService.getMany('holidays', {});
+    if (!holidays.length) {
+      props = {
+        err:  `No hay información en la 
+              base de datos. Ejecute el 
+              comando <b>npm run migrate</b> 
+              en la raíz del proyecto para 
+              popular la carga.`,
+        holidays: {},
+      };
+    } else {
+      props = { 
+        err: false, 
+        holidays 
+      };
+    }
     const jsx = renderToString(<Root {...props} />);
     const html = markup(jsx, props);
     res.send(html);
