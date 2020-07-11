@@ -4,11 +4,11 @@ import Navbar from './Navbar/Navbar';
 import Main from './Main/Main';
 import './Root.scss';
 
-const Root = ({ holidays }) => (
+const Root = ({ err, holidays }) => (
   <Fragment>
     <Header />
     <Navbar />
-    <Main holidays={holidays} />
+    <Main err={err} holidays={holidays} />
   </Fragment>
 );
 

@@ -4,7 +4,7 @@ const Navbar = () => {
   return (
     <nav>
       <div className='logo'>
-        <img src='https://upload.wikimedia.org/wikipedia/commons/7/73/Clar%C3%ADn_logo.svg' />
+        <img src='assets/clarin_logo.png' style={{ width: '300px' }} />
       </div>
     </nav>
   );

@@ -55,7 +55,7 @@ class DataBaseService {
   async update(collectionName, query, value) {
     const collection = this.db.collection(collectionName);
     const update = {
-      $set: value,
+      $set: value
     };
     const {
       modifiedCount, upsertedId, upsertedCount, matchedCount,
