@@ -69,15 +69,6 @@ class DataBaseService {
     };
   }
 
-  async delete(collectionName, query) {
-    const collection = this.db.collection(collectionName);
-    const { deletedCount } = await collection.deleteOne(query);
-
-    return {
-      deletedCount,
-    };
-  }
-
   async getCollections() {
     const collections = await this.db.collections();
     return collections.map((collection) => collection.collectionName);

@@ -17,8 +17,7 @@ const { PORT = 5000, NODE_ENV, MONGO_DB_CONNECT } = process.env;
 
 if (MONGO_DB_CONNECT) DataBaseService.connect();
 
-app.use(express.static(path.join(__dirname, '/public')));
-
+app.use(express.static(path.join(__dirname, '/public'))); // line provided by a third
 app.use(bodyParser);
 app.use('/api', apiRoutes);
 app.use('/', routes);

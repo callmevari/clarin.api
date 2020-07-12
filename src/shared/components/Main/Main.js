@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { Fragment, useState, useEffect } from 'react';
 import axios from 'axios';
 import Select from '../Select/Select';
 import List from '../List/List';
@@ -6,13 +6,12 @@ import Preview from '../Preview/Preview';
 import Edit from '../Edit/Edit';
 
 const Main = ({ err, holidays }) => {
-
   const [view, setView] = useState('List');
   const [year, setYear] = useState(2011);
   const [holiday, setHoliday] = useState({});
   const [error, setError] = useState(false);
 
-  // componentDidMount();
+  // componentDidMount()
   useEffect(() => {
     if (err) setError(true);
   }, []);
@@ -32,20 +31,16 @@ const Main = ({ err, holidays }) => {
     setView('Edit');
   };
 
-  const onClickSaveHandler = (holiday, day, month) => {
-    // change this to try/catch and async/await
-    axios.put(`/api/feriados/${parseInt(year)}/${parseInt(month)}/${parseInt(day)}`, {
-      ...holiday
-    })
-    .then((response) => {
+  const onClickSaveHandler = async (holiday, day, month) => {
+    try {
+      const response = await axios.put(`/api/feriados/${parseInt(year)}/${parseInt(month)}/${parseInt(day)}`, { ...holiday });
       if (response.status == 200) {
         console.log('Update the holidays (loaded before from props) in real time and redirect to home!');
         window.location.replace("/");
       }
-    })
-    .catch((error) => {
-      console.log(error);
-    });
+    } catch (err) {
+      return console.log(err);
+    }
   };
 
   const ViewComponent = {
@@ -68,10 +63,10 @@ const Main = ({ err, holidays }) => {
   return (
     <main>
       {!err && 
-        <React.Fragment>
+        <Fragment>
           <Select text="Año" onChangeHandler={onChangeSelectHandler} holidays={holidays} />
           {ViewComponent[view] || 'Loading view...'}
-        </React.Fragment>
+        </Fragment>
       }
       {error && <div className="errorLabel" dangerouslySetInnerHTML={{ __html: err }} />}
     </main>
