@@ -1,9 +1,9 @@
 import React from 'react';
 
-const Icon = ({ holiday, index, onClick, icon }) => {
+const Icon = ({ holiday, onClick, icon }) => {
   return (
     <a
-      onClick={() => onClick(holiday, index)}
+      onClick={() => onClick(holiday)}
       style={{ cursor: 'pointer' }}
     >
       <i className={`fa fa-${icon}`} style={{ marginRight: '10px' }} /> 

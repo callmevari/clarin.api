@@ -11,8 +11,8 @@ const List = ({ holidays, year, onClickPreviewHandler, onClickEditHandler }) => 
           <span>{returnMonth(each.mes)}</span>
           <span>{each.dia}</span>
           <span style={{ borderRight: '1px solid black' }}>
-            <Icon holiday={each} index={index} onClick={onClickPreviewHandler} icon='eye' />
-            <Icon holiday={each} index={index} onClick={onClickEditHandler} icon='pencil' />
+            <Icon holiday={each} onClick={onClickPreviewHandler} icon='eye' />
+            <Icon holiday={each} onClick={onClickEditHandler} icon='pencil' />
           </span>
         </React.Fragment>
       );

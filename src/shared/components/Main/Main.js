@@ -22,29 +22,28 @@ const Main = ({ err, holidays }) => {
     setView('List');
   };
 
-  const onClickPreviewHandler = (holiday, index) => {
-    setHoliday({ ...holiday, year, index });
+  const onClickPreviewHandler = (holiday) => {
+    setHoliday({ ...holiday });
     setView('Preview');
   };
 
-  const onClickEditHandler = (holiday, index) => {
-    setHoliday({ ...holiday, year, index });
+  const onClickEditHandler = (holiday) => {
+    setHoliday({ ...holiday });
     setView('Edit');
   };
 
-  const onClickSaveHandler = (holiday) => {
-    axios.put('/api/db/updateHolidays', {
-      value: holiday,
-      collection: 'holidays',
-      year: parseInt(year),
+  const onClickSaveHandler = (holiday, day, month) => {
+    // change this to try/catch and async/await
+    axios.put(`/api/feriados/${parseInt(year)}/${parseInt(month)}/${parseInt(day)}`, {
+      ...holiday
     })
-    .then(function (response) {
+    .then((response) => {
       if (response.status == 200) {
         console.log('Update the holidays (loaded before from props) in real time and redirect to home!');
         window.location.replace("/");
       }
     })
-    .catch(function (error) {
+    .catch((error) => {
       console.log(error);
     });
   };

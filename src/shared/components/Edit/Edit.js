@@ -1,4 +1,4 @@
-import React, { useState } from 'react';  
+import React, { useState, useEffect } from 'react';  
 
 const Edit = ({ holiday, onClickSaveHandler }) => {
 
@@ -108,7 +108,7 @@ const Edit = ({ holiday, onClickSaveHandler }) => {
           </span>
       }
       <br />
-      <button className="btn" onClick={() => onClickSaveHandler(state)}>GUARDAR</button>
+      <button className="btn" onClick={() => onClickSaveHandler(state, holiday.dia, holiday.mes)}>GUARDAR</button>
     </div>
   );  
 };  
