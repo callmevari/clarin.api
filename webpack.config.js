@@ -1,7 +1,10 @@
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const autoprefixer = require('autoprefixer');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const doNothing = (f) => f;
 
 const isDevelopment = process.env.NODE_ENV === 'development';
+const isProduction = process.env.NODE_ENV === 'production';
 
 const config = {
   entry: {
@@ -53,6 +56,7 @@ const config = {
     new MiniCssExtractPlugin({
       filename: '[name].css',
     }),
+    isProduction ? new UglifyJsPlugin() : doNothing,
   ],
 };
 

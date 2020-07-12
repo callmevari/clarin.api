@@ -29,7 +29,8 @@
     "ignore-styles": "^5.0.1",
     "mongodb": "^3.5.9",
     "react": "^16.13.1",
-    "react-dom": "^16.13.1"
+    "react-dom": "^16.13.1",
+    "uglifyjs-webpack-plugin": "^2.2.0"
   },
   "devDependencies": {
     "autoprefixer": "^9.8.4",
