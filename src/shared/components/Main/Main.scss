@@ -90,7 +90,7 @@ main {
     border-radius: 15px;
     margin-top: 15px;
     box-shadow: 2px 2px 10px grey;
-    background-color: rgb(226, 226, 226);
+    background-color: #efefef;
 
     .btn {
       height: 35px;
@@ -112,7 +112,12 @@ main {
       width: 200px !important;
     }
   } 
-  .preview .btn {
-    width: 200px;
+  .preview {
+    width: 250px !important;
+
+    .btn {
+      align-self: center;
+      width: 200px;
+    }
   }
 }

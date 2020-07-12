@@ -1,6 +1,5 @@
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const autoprefixer = require('autoprefixer');
-const path = require('path');
 
 const isDevelopment = process.env.NODE_ENV === 'development';
 

@@ -1,4 +1,5 @@
 import React from 'react';
+import '../../images/clarin_logo.png';
 
 const Navbar = () => {
   return (
