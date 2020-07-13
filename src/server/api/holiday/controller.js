@@ -6,7 +6,7 @@ class HolidayController {
       const { year } = req.params;
       const list = await HolidayService.getAll({ year: parseInt(year) });
       if (list) return res.json(list);
-      throw new Error({ message: `Holidays for year ${year} not found`, code: 404 });
+      throw new Error(`Holidays for year ${year} not found`);
     } catch (err) {
       next(err);
     }
@@ -16,7 +16,7 @@ class HolidayController {
     try {
       const { year, month, day } = req.params;
       const list = await HolidayService.getAll({ year: parseInt(year) });
-      if (!list) throw new Error({ message: `Holiday for ${day}/${month}/${year} not found`, code: 404 });
+      if (!list) throw new Error(`Holiday for ${day}/${month}/${year} not found`);
       const holiday = list.holidays.find(each => (each.dia == day && each.mes == month));
       return res.json({ ...holiday });
     } catch (err) {
@@ -29,9 +29,9 @@ class HolidayController {
       const { year, month, day } = req.params;
       const { body } = req;
       const list = await HolidayService.getAll({ year: parseInt(year) });
-      if (!list) throw new Error({ message: `Holidays for year ${year} not found`, code: 404 });
+      if (!list) throw new Error(`Holidays for year ${year} not found`);
       const holiday = list.holidays.find(each => (each.dia == day && each.mes == month));
-      if (!holiday) throw new Error({ message: `Holiday for ${day}/${month}/${year} not found`, code: 404 });
+      if (!holiday) throw new Error(`Holiday for ${day}/${month}/${year} not found`);
       const index = list.holidays.findIndex(each => (each.dia == day && each.mes == month));
       const update = await HolidayService.overwrite(holiday, body);
       const result = await HolidayService.updateOne(index, year, update);
