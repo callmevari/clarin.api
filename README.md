@@ -6,7 +6,7 @@ The app's objective is manage the holidays of the years, between 2011 and the se
 
 You need to have Node.js installed on your computer, that's the only requirement. 
 
-# local install
+# Local install
 To get the project running locally, you'll need to clone the repo and run the following command inside the project folder: npm install
 
 This'll install all the dependencies of the project.
@@ -19,7 +19,7 @@ The project is connected to a test database in MongoDB Atlas to be fast handle. 
 
 This'll run the migration.js and populate the first load of information in the db.
 
-# run the project
+# Run the project
 You can run the project in development mode or in production mode.
 For development mode: open two terminals and run these commands, both in the root of the project. The first if for run the node app, and the second is for generate the webpack bundles.
 
@@ -65,7 +65,7 @@ npm run migrate
 
 An wait until the process end to see the application with information.
 
-# API Endpoints
+# API endpoints
 Once you have the app running, you can test the three endpoints from Postman or your tool of preference.
 
 [GET] /api/feriados/:año, where :año could be 2011
