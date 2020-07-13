@@ -10,8 +10,9 @@ const {
 
 class DataBaseService {
   constructor() {
-    this.uri = `mongodb://${MONGO_DB_USER}:${MONGO_DB_PSW}@${MONGO_DB_HOST}:${MONGO_DB_PORT}/${MONGO_DB_NAME}`;
-    this.client = new MongoClient(this.uri, { useUnifiedTopology: true });
+    if (MONGO_DB_PORT) this.uri = `mongodb://${MONGO_DB_USER}:${MONGO_DB_PSW}@${MONGO_DB_HOST}:${MONGO_DB_PORT}/${MONGO_DB_NAME}`;
+    else this.uri = `mongodb+srv://${MONGO_DB_USER}:${MONGO_DB_PSW}@${MONGO_DB_HOST}/${MONGO_DB_NAME}?retryWrites=true&w=majority`;
+    this.client = new MongoClient(this.uri, { useUnifiedTopology: true, useNewUrlParser: true });
     this.db = undefined;
   }
 

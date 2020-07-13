@@ -34,10 +34,7 @@ const Main = ({ err, holidays }) => {
   const onClickSaveHandler = async (holiday, day, month) => {
     try {
       const response = await axios.put(`/api/feriados/${parseInt(year)}/${parseInt(month)}/${parseInt(day)}`, { ...holiday });
-      if (response.status == 200) {
-        console.log('Update the holidays (loaded before from props) in real time and redirect to home!');
-        window.location.replace("/");
-      }
+      if (response.status == 200) window.location.replace("/");
     } catch (err) {
       return console.log(err);
     }
