@@ -21,7 +21,7 @@ This'll run the migration.js and populate the first load of information in the d
 
 # Run the project
 You can run the project in development mode or in production mode.
-For development mode: open two terminals and run these commands, both in the root of the project. The first if for run the node app, and the second is for generate the webpack bundles.
+For development mode: open two terminals and run these commands, both in the root of the project. The first is for run the node app, and the second is for generate the webpack bundles.
 
 
 npm run start-dev
