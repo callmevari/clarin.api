@@ -21,6 +21,10 @@ const Main = ({ err, holidays }) => {
     setView('List');
   };
 
+  const onClickGoBackHandler = (e) => {
+    setView('List');
+  };
+
   const onClickPreviewHandler = (holiday) => {
     setHoliday({ ...holiday });
     setView('Preview');
@@ -50,10 +54,12 @@ const Main = ({ err, holidays }) => {
     Preview: <Preview 
       holiday={holiday}
       onClickEditHandler={onClickEditHandler}
+      onClickGoBackHandler={onClickGoBackHandler}
     />,
     Edit: <Edit 
       holiday={holiday}
       onClickSaveHandler={onClickSaveHandler}
+      onClickGoBackHandler={onClickGoBackHandler}
     />,
   };
 

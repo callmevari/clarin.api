@@ -4,6 +4,13 @@ import returnMonth from '../../utils/returnMonth';
 
 const List = ({ holidays, year, onClickPreviewHandler, onClickEditHandler }) => {
 
+  const headerStyle = {
+    backgroundColor: 'black', 
+    color: 'white', 
+    fontWeight: 'bold',
+    borderRight: '1px solid white'
+  };
+
   const listHolidays = () => {
     const find = holidays.find((each) => each.year == year);
     const list = find.holidays.map((each, index) => {
@@ -23,13 +30,13 @@ const List = ({ holidays, year, onClickPreviewHandler, onClickEditHandler }) => 
 
   return (
     <div className='grid'>
-      <span>
+      <span style={headerStyle}>
         <strong>Mes</strong>
       </span>
-      <span>
+      <span style={headerStyle}>
         <strong>Día</strong>
       </span>
-      <span style={{ borderRight: '1px solid black' }}>
+      <span style={{ backgroundColor: 'black', color: 'white', fontWeight: 'bold', borderRight: '1px solid black' }}>
         <strong>Acción</strong>
       </span>
       {listHolidays()}
