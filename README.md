@@ -32,5 +32,33 @@ For production mode, is only one command:
 
 npm run start
 
-
 There are little things changed in production mode, like the UglifyJsPlugin running with webpack and another stuff.
+After that, you'll be able to go to and enjoy the app.
+
+# Docker launch
+Also, you can run the project with Docker. It's easy as run two commands:
+
+docker build -t clarin.api:v1 .
+
+After create the image, run it with the following command:
+
+docker run -t -d -i -p 5000:5000 --name clarin.api clarin.api:v1
+
+After launch the container, go to http://localhost:5000 and enjoy the app. If the app is not yet served, wait a few minute until npm install all the stuff and the app connect to the database.
+
+# MongoDB with Docker
+If you choose the way of Docker launch, you'll need to populate the first load of information in the database through the container. To do that, see the following instructions:
+
+First, execute the command: docker ps
+
+in order to get the CONTAINER ID of the instance you launched before.
+Once you got it (it's a hash similar to 9f83cb4b8d82, for example) you need to enter into the container, with the command: 
+
+docker exec -it <container_id> bash
+
+replacing <container_id> with your hash.
+Once you are inside the container, run the last command: 
+
+npm run migrate
+
+An wait until the process end to see the application with information.
