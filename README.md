@@ -72,7 +72,7 @@ Once you have the app running, you can test the three endpoints from Postman or 
 
 [GET] /api/feriados/:año/:mes/:dia, where the parameters could be 2011/1/1
 
-[PUT] /api/feriados/:año/:mes/:dia, with payload to edit the content
+[PUT] /api/feriados/:año/:mes/:dia, with a payload to edit the content
 
 The Content Type of the requests need to be application/json
 
