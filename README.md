@@ -64,3 +64,13 @@ Once you are inside the container, run the last command:
 npm run migrate
 
 An wait until the process end to see the application with information.
+
+# API Endpoints
+Once you have the app running, you can test the three endpoints from Postman or your tool of preference.
+
+[GET] /api/feriados/:año, where :año could be 2011
+[GET] /api/feriados/:año/:mes/:dia, where the parameters could be 2011/1/1
+[PUT] /api/feriados/:año/:mes/:dia, with payload to edit the content
+
+The Content Type of the requests need to be application/json
+
