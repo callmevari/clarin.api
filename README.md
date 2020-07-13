@@ -4,6 +4,8 @@ The app has webpack and babel configured in the root of the project.
 
 The app's objective is manage the holidays of the years, between 2011 and the selected year by the admin. We recommend to set the YEAR_LIMIT to a value of 2021, because the No-Laborables API seems tu return a simple calculation above 2021.
 
+You need to have Node.js installed on your computer, that's the only requirement. 
+
 # local install
 To get the project running locally, you'll need to clone the repo and run the following command inside the project folder: npm install
 
